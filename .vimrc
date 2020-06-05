@@ -1,62 +1,52 @@
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
+set nu
+set rnu
+syntax enable
+" set mouse=a
+set numberwidth=1
+" set clipboard=unnamed
+set showcmd
+set ruler
+set encoding=utf-8
+set showmatch
+set sw=2
+set hlsearch
+set laststatus=1
+
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
 
 " Theme
 Plug 'zeis/vim-kolor'
-Plug 'voronianski/oceanic-next-color-scheme'
-Plug 'chriskempson/base16-vim'
-Plug 'danilo-augusto/vim-afterglow'
+Plug 'morhetz/gruvbox'
 
 " IDE para python
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'easymotion/vim-easymotion'
+
 
 " Initialize plugin system
 call plug#end()
 
-set nu
-set rnu
-syntax on
 " Kolor Configuration
 let g:kolor_italic=1
 let g:kolor_bold=1
 let g:kolor_underlined=0
 let g:kolor_alternative_matchparen=0
 let g:kolor_inverted_matchparen=0
+" set bg=dark
 colorscheme kolor
-" colorscheme afterglow
-" colorscheme base16-brewer
+" colorscheme gruvbox
+let g:gruvbox_contrast_dark = "hard"
+let mapleader = " "
+
+" easymotion
+nmap <leader>f <Plug>(easymotion-s2)
 
 " for hide and show nerdtree
-nmap <F6> :NERDTreeToggle<CR>
+" nmap <F6> :NERDTreeToggle<CR>
+" nmap <leader>n :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
